@@ -29,3 +29,7 @@ module "storage_insecure_setup" {
     bucket_prefix = "non-chalant"
 }
 
+module "networking-insecure_setup" {
+    source = "./modules/networking_insecure_setup"
+}
+

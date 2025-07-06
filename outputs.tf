@@ -24,3 +24,14 @@ value = {
 publicly_readable = module.storage_insecure_setup.public_read_bucket_name
     }
 }
+
+// insecure networking config
+
+output "insecure_networking" {
+    description = "Networking details"
+    value = {
+       vpcid = module.networking-insecure_setup.vpc_id,
+       public_subnets =  module.networking-insecure_setup.public_subnet_ids,
+       insecure_sg = module.networking-insecure_setup.insecure_security_group_id
+    }
+}
