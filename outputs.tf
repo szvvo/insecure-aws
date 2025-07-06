@@ -8,6 +8,7 @@ output "insecure_user_credentials" {
     access_key_id     = module.iam_insecure_setup.insecure_user_access_key_id
     secret_access_key = module.iam_insecure_setup.insecure_user_secret_access_key
   }
+   sensitive = true
 }
 
 output "insecure_role_arn" {
