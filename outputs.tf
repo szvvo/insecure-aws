@@ -1,15 +1,16 @@
 
+# outputs.tf
 
-# output "create_user_access_keys" {
-#   description = "AWS CLI command to create access keys for the insecure user"
-#   value = "aws iam create-access-key --user-name ${module.iam_insecure_setup.aws_iam_user.name}"
-# }
+output "insecure_user_credentials" {
+  description = "Credentials for the over-privileged IAM user. Do not use in production."
+  value = {
+    user_name         = module.iam_insecure_setup.insecure_user_name
+    access_key_id     = module.iam_insecure_setup.insecure_user_access_key_id
+    secret_access_key = module.iam_insecure_setup.insecure_user_secret_access_key
+  }
+}
 
-# all modules outputs
-
-# iam_insecure_setup
-# aws access key
- output "aws_access_key" {
-  description = "AWS access key"
-  value = module.iam_insecure_setup.aws_iam_user.name
- }
+output "insecure_role_arn" {
+  description = "ARN of the dangerously assumable admin role."
+  value       = module.iam_insecure_setup.insecure_role_arn
+}
