@@ -23,3 +23,9 @@ module "iam_insecure_setup" {
   role_name = "insecure_role"
 }
 
+module "storage_insecure_setup" {
+    source = "./modules/storage_insecure_setup"
+    // modify storage prefix
+    bucket_prefix = "non-chalant"
+}
+

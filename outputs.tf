@@ -15,3 +15,12 @@ output "insecure_role_arn" {
   description = "ARN of the dangerously assumable admin role."
   value       = module.iam_insecure_setup.insecure_role_arn
 }
+
+// insecure bucket config
+
+output "insecure_s3_bucket_names" {
+description = "A list of the insecure S3 buckets created for the demo."
+value = {
+publicly_readable = module.storage_insecure_setup.public_read_bucket_name
+    }
+}

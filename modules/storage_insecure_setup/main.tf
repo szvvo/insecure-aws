@@ -3,6 +3,9 @@
 // This is the main file for our module. It defines the insecure
 // storage resources
 // ------------------------------------------------------------------
+resource "random_id" "id" {
+byte_length = 4
+}
 
 resource "aws_s3_bucket" "public_read_bucket" {
     bucket = "${var.bucket_prefix}-public-read-${random_id.id.hex}" 
@@ -36,6 +39,9 @@ resource "aws_s3_bucket_acl" "public_read_acl" {
      ]
 
      bucket = aws_s3_bucket.public_read_bucket.id
-     acl = "public_read"
+     acl = "public-read"
   
 }
+
+// Bucket Unencrypted
+// Setting the bucket to not enforce server side encryption on objects
